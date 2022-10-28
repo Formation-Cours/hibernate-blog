@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Collection;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,4 +18,7 @@ public class CategoryEntity {
 
 	@Column(length = 64, unique = true, nullable = false)
 	private String name;
+
+	@OneToMany(cascade = {CascadeType.REMOVE}, mappedBy = "category")
+	private Collection<ArticleEntity> articles;
 }

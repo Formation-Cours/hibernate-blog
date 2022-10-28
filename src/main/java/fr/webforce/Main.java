@@ -22,8 +22,7 @@ public class Main {
 				"Je suis un article.",
 				"Samuel MICHAUX");
 
-		CategoryEntity cat1 = new CategoryEntity(null, "maison");
-		cat1 = categoryService.save(cat1);
+		CategoryEntity cat1 = new CategoryEntity(null, "maison", null);
 
 		art1.setCategory(cat1);
 

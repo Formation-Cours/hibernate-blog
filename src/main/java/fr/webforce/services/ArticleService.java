@@ -35,7 +35,7 @@ public class ArticleService {
 			art.setDateUpdated(Calendar.getInstance());
 		}
 		Transaction tx = session.beginTransaction();
-		session.merge(art);
+		session.persist(art);
 		tx.commit();
 	}
 

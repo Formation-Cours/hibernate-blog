@@ -42,7 +42,7 @@ public class ArticleEntity {
 	@Column(name = "date_deleted")
 	private Calendar dateDeleted;
 
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = false, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
 	private CategoryEntity category;
 
 	public ArticleEntity(Integer id) {
