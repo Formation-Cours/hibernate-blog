@@ -1,7 +1,9 @@
 package fr.webforce;
 
 import fr.webforce.entities.ArticleEntity;
+import fr.webforce.entities.CategoryEntity;
 import fr.webforce.services.ArticleService;
+import fr.webforce.services.CategoryService;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -9,9 +11,23 @@ import java.util.Optional;
 public class Main {
 
 	static ArticleService articleService = new ArticleService();
+	static CategoryService categoryService = new CategoryService();
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		System.out.println("Hello world!");
+
+		ArticleEntity art1 = new ArticleEntity(
+				"Article 1",
+				"article-1",
+				"Je suis un article.",
+				"Samuel MICHAUX");
+
+		CategoryEntity cat1 = new CategoryEntity(null, "maison");
+		cat1 = categoryService.save(cat1);
+
+		art1.setCategory(cat1);
+
+		articleService.save(art1);
 
 		Collection<ArticleEntity> articles = articleService.findAll();
 		System.out.println(articles);

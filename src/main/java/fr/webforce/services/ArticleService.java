@@ -1,5 +1,6 @@
 package fr.webforce.services;
 
+import fr.webforce.Config;
 import fr.webforce.entities.ArticleEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -12,7 +13,7 @@ import java.util.Collection;
 import java.util.Optional;
 
 public class ArticleService {
-	private final Session session = build().openSession();
+	private final Session session = Config.build().openSession();
 
 	public Collection<ArticleEntity> findAll() {
 		return session.createQuery("FROM ArticleEntity").getResultList();
@@ -45,7 +46,4 @@ public class ArticleService {
 		tx.commit();
 	}
 
-	private SessionFactory build() {
-		return new Configuration().configure().buildSessionFactory();
-	}
 }

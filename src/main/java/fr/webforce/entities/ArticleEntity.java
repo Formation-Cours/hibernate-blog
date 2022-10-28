@@ -42,7 +42,7 @@ public class ArticleEntity {
 	@Column(name = "date_deleted")
 	private Calendar dateDeleted;
 
-	@ManyToOne
+	@ManyToOne(optional = false)
 	private CategoryEntity category;
 
 	public ArticleEntity(Integer id) {
